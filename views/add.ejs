@@ -1,0 +1,141 @@
+<%- include("header.ejs") %>
+
+<div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h2 class="mb-0">
+                            <i class="fas fa-calendar-plus me-3"></i>
+                            Create New Event
+                        </h2>
+                        <p class="mb-0 mt-2">Fill in the details below to add your event</p>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <form action="/add" method="POST">
+                            <div class="row g-3">
+                                
+                                <div class="col-md-6">
+                                    <label for="event_name" class="form-label">
+                                        <i class="fas fa-calendar-check me-2"></i>Event Name <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="event_name" 
+                                           name="event_name" required>
+                                </div>
+
+                                
+                                <div class="col-md-6">
+                                    <label for="type" class="form-label">
+                                        <i class="fas fa-tag me-2"></i>Event Type <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-select" id="type" name="type" required>
+                                        <option value="">Choose event type...</option>
+                                        <option value="meeting">Meeting</option>
+                                        <option value="conference">Conference</option>
+                                        <option value="workshop">Workshop</option>
+                                        <option value="seminar">Seminar</option>
+                                        <option value="training">Training</option>
+                                        <option value="presentation">Presentation</option>
+                                        <option value="social">Social Event</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                               
+                                <div class="col-12">
+                                    <label for="subject" class="form-label">
+                                        <i class="fas fa-bookmark me-2"></i>Event Subject <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="subject" 
+                                           name="subject" required>
+                                </div>
+
+                                
+                                <div class="col-12">
+                                    <label for="event_description" class="form-label">
+                                        <i class="fas fa-align-left me-2"></i>Event Description
+                                    </label>
+                                    <textarea class="form-control" id="event_description" 
+                                              name="event_description" rows="4" required></textarea>
+                                </div>
+
+                                
+                                <div class="col-12">
+                                    <label for="location" class="form-label">
+                                        <i class="fas fa-map-marker-alt me-2"></i>Location
+                                    </label>
+                                    <input type="text" class="form-control" id="location" 
+                                           name="location" required>
+                                </div>
+
+                                
+                                <div class="col-md-6">
+                                    <label for="date" class="form-label">
+                                        <i class="fas fa-calendar me-2"></i>Event Date
+                                    </label>
+                                    <input type="date" class="form-control" id="date" name="date" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="time" class="form-label">
+                                        <i class="fas fa-clock me-2"></i>Event Time
+                                    </label>
+                                    <input type="time" class="form-control" id="time" name="time" required>
+                                </div>
+
+                                
+                                <div class="col-12">
+                                    <label class="form-label">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>Priority Level
+                                    </label>
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" 
+                                                       name="prioritisation" id="priority_high" value="high">
+                                                <label class="form-check-label badge bg-danger w-100 p-2" for="priority_high">
+                                                    <i class="fas fa-arrow-up me-2"></i>High Priority
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" 
+                                                       name="prioritisation" id="priority_medium" value="medium" checked>
+                                                <label class="form-check-label badge bg-warning w-100 p-2" for="priority_medium">
+                                                    <i class="fas fa-minus me-2"></i>Medium Priority
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" 
+                                                       name="prioritisation" id="priority_low" value="low">
+                                                <label class="form-check-label badge bg-success w-100 p-2" for="priority_low">
+                                                    <i class="fas fa-arrow-down me-2"></i>Low Priority
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <input type="hidden" name="email" value="<%= email %>">
+
+                               
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg me-3">
+                                        <i class="fas fa-save me-2"></i>Create Event
+                                    </button>
+                                    <a href="/dashboard" class="btn btn-secondary btn-lg">
+                                        <i class="fas fa-times me-2"></i>Cancel
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+  <form method="POST" action="/login" class="p-4 bg-white shadow rounded" style="width: 100%; max-width: 400px;">
+    
+
+    <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
+    <% if (locals.success.length > 0) { %>
+  <div class="alert alert-success">
+    <% success.forEach(msg => { %>
+      <div><%= msg %></div>
+    <% }) %>
+  </div>
+<% } %>
+    <% if (locals.error.length > 0) { %>
+      <div class="alert alert-danger">
+        <% error.forEach(msg => { %>
+          <div><%= msg %></div>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com"  />
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" minlength="6" />
+      <label for="floatingPassword">Password</label>
+    </div>
+
+
+
+    <button class="btn btn-dark w-100" type="submit">Login</button>
+  </form>
+
+</body>
+</html>

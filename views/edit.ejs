@@ -1,0 +1,124 @@
+
+<%- include("header.ejs") %>
+
+
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow">
+        <div class="card-header bg-warning text-white text-center py-4">
+          <h2 class="mb-0">
+            <i class="fas fa-edit me-3"></i>
+            Edit Event
+          </h2>
+          <p class="mb-0 mt-2">Modify the fields below and save your changes</p>
+        </div>
+
+        <div class="card-body p-4">
+          <form action="/edit-event/<%= event.id %>" method="POST">
+            <div class="row g-3">
+              <!-- Event Name -->
+              <div class="col-md-6">
+                <label for="event_name" class="form-label">
+                  <i class="fas fa-calendar-check me-2"></i>Event Name
+                </label>
+                <input type="text" class="form-control" id="event_name" name="event_name" required value="<%= event.event_name %>">
+              </div>
+
+              <!-- Type -->
+              <div class="col-md-6">
+                <label for="type" class="form-label">
+                  <i class="fas fa-tag me-2"></i>Event Type
+                </label>
+                <select class="form-select" id="type" name="type" required>
+                  <option value="">Choose event type...</option>
+                  <% const types = ["meeting", "conference", "workshop", "seminar", "training", "presentation", "social", "other"]; %>
+                  <% types.forEach(t => { %>
+                    <option value="<%= t %>" <%= event.type === t ? 'selected' : '' %>><%= t.charAt(0).toUpperCase() + t.slice(1) %></option>
+                  <% }) %>
+                </select>
+              </div>
+
+              <!-- Subject -->
+              <div class="col-12">
+                <label for="subject" class="form-label">
+                  <i class="fas fa-bookmark me-2"></i>Event Subject
+                </label>
+                <input type="text" class="form-control" id="subject" name="subject" required value="<%= event.subject %>">
+              </div>
+
+              <!-- Description -->
+              <div class="col-12">
+                <label for="event_description" class="form-label">
+                  <i class="fas fa-align-left me-2"></i>Event Description
+                </label>
+                <textarea class="form-control" id="event_description" name="event_description" rows="4" required><%= event.event_description %></textarea>
+              </div>
+
+              <!-- Location -->
+              <div class="col-12">
+                <label for="location" class="form-label">
+                  <i class="fas fa-map-marker-alt me-2"></i>Location
+                </label>
+                <input type="text" class="form-control" id="location" name="location" required value="<%= event.location %>">
+              </div>
+
+              <!-- Date and Time -->
+              <div class="col-md-6">
+                <label for="date" class="form-label">
+                  <i class="fas fa-calendar me-2"></i>Event Date
+                </label>
+                <input type="date" class="form-control" id="date" name="date" required value="<%= event.date.toISOString().split('T')[0] %>">
+              </div>
+
+              <div class="col-md-6">
+                <label for="time" class="form-label">
+                  <i class="fas fa-clock me-2"></i>Event Time
+                </label>
+                <input type="time" class="form-control" id="time" name="time" required value="<%= event.time %>">
+              </div>
+
+              <!-- Priority -->
+              <div class="col-12">
+                <label class="form-label">
+                  <i class="fas fa-exclamation-triangle me-2"></i>Priority Level
+                </label>
+                <div class="row g-2">
+                  <% const priorities = ['high', 'medium', 'low']; %>
+                  <% priorities.forEach(p => { %>
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="prioritisation" id="priority_<%= p %>" value="<%= p %>" <%= event.prioritisation === p ? 'checked' : '' %>>
+                        <label class="form-check-label badge bg-<%= p === 'high' ? 'danger' : p === 'medium' ? 'warning' : 'success' %> w-100 p-2" for="priority_<%= p %>">
+                          <%= p.charAt(0).toUpperCase() + p.slice(1) %> Priority
+                        </label>
+                      </div>
+                    </div>
+                  <% }) %>
+                </div>
+              </div>
+
+              <!-- Hidden Email -->
+              <input type="hidden" name="email" value="<%= email %>">
+
+              <!-- Submit -->
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-success btn-lg me-3">
+                  <i class="fas fa-save me-2"></i>Update Event
+                </button>
+                <a href="/dashboard" class="btn btn-secondary btn-lg">
+                  <i class="fas fa-times me-2"></i>Cancel
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
