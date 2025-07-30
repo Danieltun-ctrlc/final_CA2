@@ -12,17 +12,13 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-const connection = mysql.createPool({
+const connection = mysql.createConnection({
     host: 'kwbnqa.h.filess.io',
     user: 'CA2event_wirerainas',
     password: 'af2985973478d60ccec642ea6bb6b29f2dfdff85',
     database: 'CA2event_wirerainas',
-    port: 61002,
-    connectTimeout: 10000,
-    waitForConnections: true,
-    connectionLimit: 10,   
-    queueLimit: 0
-});
+    port: 61002,                        
+})
 
 app.use(session({
   secret: '123secret',
