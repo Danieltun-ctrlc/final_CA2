@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const connection = mysql.createConnection({
-    host: 'kwbnqa.h.filess.io',
-    user: 'CA2event_wirerainas',
-    password: 'af2985973478d60ccec642ea6bb6b29f2dfdff85',
-    database: 'CA2event_wirerainas',
+    host: 'muqget.h.filess.io',
+    user: 'CA2final_political',
+    password: '5d0e36d50c1a94b1358205fe6257d178323e40bc',
+    database: 'CA2final_political',
     port: 61002,                        
 })
 
