@@ -20,6 +20,13 @@ const connection = mysql.createConnection({
     port: 61002,                        
 })
 
+connection.connect((err) => {
+    if (err) throw err;
+    console.log('✅ Connected to MySQL database.');
+});
+
+module.exports = connection;
+
 app.use(session({
   secret: '123secret',
   resave: false,
